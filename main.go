@@ -20,7 +20,7 @@ func main() {
 
 	arr := []int{3, 8, 2, 5, 1, 4, 7, 6}
 	fmt.Println("arr: ", arr)
-	quicksort.QuickSort(arr, 0, len(arr)-1)
+	quicksort.QuickSort(arr, 0, len(arr))
 	fmt.Println("Res arr: ", arr)
 
 }

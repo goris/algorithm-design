@@ -19,28 +19,30 @@ func swap(arr []int, a, b int) {
 }
 
 func QuickSort(arr []int, start, end int) {
-	if start < end {
-		pivot := Partition(arr, start, end)
-		//pivot := arr[start]
-		if DEBUG {
-			fmt.Println("arr: ", arr, "start: ", start, "end: ", end, "pivot: ", pivot)
-		}
+	pivot := Partition(arr, start, end)
+	if DEBUG {
+		fmt.Println("arr: ", arr, "start: ", start, "end: ", end, "pivot: ", pivot)
+	}
+	if start < pivot-1 {
 		QuickSort(arr, start, pivot-1)
-		QuickSort(arr, pivot+1, end)
+	}
+	if pivot < end {
+		QuickSort(arr, pivot, end)
 	}
 	fmt.Println("Comps: ", comps)
 }
 
 func Partition(arr []int, left int, right int) int {
-	pivot := arr[right]
-	i := left
+	pivot := arr[left]
+	i := left + 1
 
-	for j := left; j <= right-1; j++ {
-		if arr[j] <= pivot {
+	for j := left + 1; j < right; j++ {
+		comps++
+		if arr[j] < pivot {
 			swap(arr, i, j)
 			i++
 		}
 	}
-	swap(arr, i, right)
+	swap(arr, left, i-1)
 	return i
 }
